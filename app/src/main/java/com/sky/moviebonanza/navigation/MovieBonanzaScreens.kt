@@ -3,8 +3,7 @@ package com.sky.moviebonanza.navigation
 enum class MovieBonanzaScreens {
     SplashScreen,
     HomeScreen,
-    DetailsScreen
-   ;
+    DetailsScreen;
 
     companion object{
         fun fromRoute(route: String) : MovieBonanzaScreens
