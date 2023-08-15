@@ -24,6 +24,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.sky.moviebonanza.R
 import com.sky.moviebonanza.components.MovieAppBar
+import com.sky.moviebonanza.components.MovieRowData
+import com.sky.moviebonanza.components.SearchMovie
 import com.sky.moviebonanza.model.MovieItem
 import com.sky.moviebonanza.navigation.MovieBonanzaScreens
 import com.sky.moviebonanza.utils.formatStringToJSON

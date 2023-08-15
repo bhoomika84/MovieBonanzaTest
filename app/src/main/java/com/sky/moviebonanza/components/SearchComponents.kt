@@ -1,4 +1,4 @@
-package com.sky.moviebonanza.screens.home
+package com.sky.moviebonanza.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
