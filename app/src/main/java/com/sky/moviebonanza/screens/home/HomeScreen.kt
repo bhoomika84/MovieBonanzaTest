@@ -68,7 +68,7 @@ fun HomeContent(
 }
 
 @Composable
-fun showLoading() {
+fun LoadingIndicator() {
     Column(modifier = Modifier.fillMaxWidth()) {
         LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
     }
@@ -79,7 +79,7 @@ fun LoadContentForList(navController: NavController, viewModel: HomeViewModel) {
 
     println("OUTSIDE LoadContentForList ${viewModel.loading} ${viewModel.listOfMovies}")
     if (viewModel.loading) {
-        showLoading()
+        LoadingIndicator()
     } else if (viewModel.exception.isNotEmpty()) {
         println("OUTSIDE Exception ${viewModel.exception} || ")
         Column(
@@ -133,9 +133,9 @@ fun ShowMovieListData(navController: NavController, viewModel: HomeViewModel) {
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             items(movieList) {
-                MovieRowData(it) {movieItem ->
+                MovieRowData(it) { movieItem ->
                     val objMovie = formatStringToJSON(movieItem)
-                    navController.navigate(MovieBonanzaScreens.DetailsScreen.name+"/${objMovie}")
+                    navController.navigate(MovieBonanzaScreens.DetailsScreen.name + "/${objMovie}")
                 }
             }
         }

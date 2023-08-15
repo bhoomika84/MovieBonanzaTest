@@ -39,9 +39,8 @@ fun InputField(
     keyboardType: KeyboardType = KeyboardType.Text,
     imeAction: ImeAction = ImeAction.Done,
     onAction: KeyboardActions = KeyboardActions.Default,
-    isTrailing: Boolean =false,
-    clearVisibility : MutableState<Boolean> = mutableStateOf(false),
-    valueUpdate: (String) -> Unit ={}
+    isTrailing: Boolean = false,
+    valueUpdate: (String) -> Unit = {}
 ) {
     OutlinedTextField(
         value = valueState.value,
@@ -59,7 +58,7 @@ fun InputField(
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
         keyboardActions = onAction,
         trailingIcon = {
-            ClearVisibility(valueState.value,isTrailing){
+            ClearVisibility(valueState.value, isTrailing) {
                 valueState.value = ""
                 valueUpdate.invoke("")
             }
@@ -69,9 +68,9 @@ fun InputField(
 }
 
 @Composable
-fun ClearVisibility(value: String, isTrailing: Boolean, clearText: () -> Unit ={}){
+fun ClearVisibility(value: String, isTrailing: Boolean, clearText: () -> Unit = {}) {
     val visible = value.isNotEmpty() && isTrailing
-    if(visible) {
+    if (visible) {
         IconButton(onClick = { clearText.invoke() }) {
             Icon(
                 imageVector = Icons.Default.Close,
@@ -85,8 +84,6 @@ fun ClearVisibility(value: String, isTrailing: Boolean, clearText: () -> Unit ={
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchMovie(
-    modifier: Modifier = Modifier,
-    loading: Boolean = false,
     onSearch: (String) -> Unit = {}
 ) {
     Column {
@@ -104,8 +101,8 @@ fun SearchMovie(
                 keyboardController?.hide()
             },
             isTrailing = true,
-        ){
-            if (searchQueryState.value.trim().isEmpty()){
+        ) {
+            if (searchQueryState.value.trim().isEmpty()) {
                 keyboardController?.hide()
             }
             onSearch(searchQueryState.value.trim())

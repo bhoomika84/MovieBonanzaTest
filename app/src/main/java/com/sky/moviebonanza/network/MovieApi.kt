@@ -7,5 +7,5 @@ import javax.inject.Singleton
 @Singleton
 interface MovieApi {
     @GET("b/YNFW")
-    suspend fun getAllMovies() : ArrayList<MovieItem>
+    suspend fun getAllMovies(): ArrayList<MovieItem>
 }

@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(
 
     var listOfMovies: List<MovieItem> by mutableStateOf(listOf())
     var _listOfMovies: List<MovieItem> by mutableStateOf(listOf())
-    var exception: String by  mutableStateOf("")
+    var exception: String by mutableStateOf("")
     var loading: Boolean by mutableStateOf(true)
 
     init {
@@ -35,11 +35,11 @@ class HomeViewModel @Inject constructor(
                 println("VM SUCCESS _listOfMovies $_listOfMovies")
                 if (_listOfMovies.isNotEmpty()) {
                     setListOfMovies()
-                }else{
+                } else {
                     exception = "Data is Empty"
                 }
                 loading = false
-            }else{
+            } else {
                 exception = response.message.toString()
                 loading = false
                 println("VM SUCCESS exception $exception")
@@ -52,7 +52,7 @@ class HomeViewModel @Inject constructor(
         println("VM setListOfMovies $listOfMovies")
     }
 
-    fun getFilteredMovieList(query: String){
+    fun getFilteredMovieList(query: String) {
         viewModelScope.launch {
             if (query.isEmpty()) {
                 setListOfMovies()

@@ -33,18 +33,18 @@ fun SplashContent(navController: NavController) {
     val scale = remember {
         Animatable(0f)
     }
-    LaunchedEffect(key1 = true){
+    LaunchedEffect(key1 = true) {
         scale.animateTo(
-            targetValue =  0.9f,
+            targetValue = 0.9f,
             animationSpec = tween(durationMillis = 800,
-                easing = { OvershootInterpolator(8f).getInterpolation(it)})
+                easing = { OvershootInterpolator(8f).getInterpolation(it) })
         )
         delay(2000L)
-         navController.navigate(MovieBonanzaScreens.HomeScreen.name){
-             popUpTo(MovieBonanzaScreens.SplashScreen.name){
-                 inclusive = true
-             }
-         }
+        navController.navigate(MovieBonanzaScreens.HomeScreen.name) {
+            popUpTo(MovieBonanzaScreens.SplashScreen.name) {
+                inclusive = true
+            }
+        }
     }
 
     Surface(

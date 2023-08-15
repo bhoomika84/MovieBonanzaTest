@@ -8,7 +8,7 @@ data class MovieItem(
 
     val Title: String,
 
-)
+    )
 /*
 data class MovieItem(
     val Actors: String,

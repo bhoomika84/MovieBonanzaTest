@@ -29,7 +29,7 @@ import com.sky.moviebonanza.model.MovieItem
 import com.sky.moviebonanza.utils.formatJSONtoString
 
 @Composable
-fun MovieRowData(movieItem: MovieItem, onItemClicked : (String) -> Unit = {}) {
+fun MovieRowData(movieItem: MovieItem, onItemClicked: (String) -> Unit = {}) {
     val imageUrl = movieItem.Poster
     Card(
         modifier = Modifier
