@@ -34,5 +34,4 @@ data class MovieItem(
     val Year: Int,
     val imdbID: String,
     val imdbRating: Double
-
 )*/

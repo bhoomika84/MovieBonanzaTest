@@ -26,5 +26,4 @@ fun MovieNavigation() {
             HomeScreen(navController,homeViewModel)
         }
     }
-
 }
