@@ -1,21 +1,13 @@
 package com.sky.moviebonanza.screens.home
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sky.moviebonanza.data.DataOrException
-import com.sky.moviebonanza.data.Resource
 import com.sky.moviebonanza.model.MovieItem
 import com.sky.moviebonanza.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,9 +15,6 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val repository: MovieRepository
 ) : ViewModel() {
-
-    /* val dataOrExceptionMovies: MutableState<DataOrException<List<MovieItem>, Boolean, String>> =
-         mutableStateOf(DataOrException(null, true, ""))*/
 
     var listOfMovies: List<MovieItem> by mutableStateOf(listOf())
     var _listOfMovies: List<MovieItem> by mutableStateOf(listOf())
@@ -47,7 +36,7 @@ class HomeViewModel @Inject constructor(
                 if (_listOfMovies.isNotEmpty()) {
                     setListOfMovies()
                 }else{
-                    exception ="Data is Empty"
+                    exception = "Data is Empty"
                 }
                 loading = false
             }else{
@@ -58,18 +47,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-
-    /* private fun getMovieList() {
-        viewModelScope.launch {
-            val response = repository.getMovieList()
-            println("VM SUCCESS")
-            dataOrExceptionMovies.value = response
-            if (!response.data.isNullOrEmpty()) {
-                setListOfMovies()
-            }
-        }
-    }
-*/
     private fun setListOfMovies() {
         listOfMovies = _listOfMovies
         println("VM setListOfMovies $listOfMovies")

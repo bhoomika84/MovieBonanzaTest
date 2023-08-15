@@ -7,7 +7,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.sky.moviebonanza.screens.home.HomeScreen
 import com.sky.moviebonanza.screens.home.HomeViewModel
-import com.sky.moviebonanza.screens.search.SearchScreen
 import com.sky.moviebonanza.screens.splash.SplashScreen
 
 @Composable

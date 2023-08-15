@@ -6,11 +6,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.sky.moviebonanza.screens.home.HomeViewModel
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import dagger.hilt.android.testing.HiltTestApplication
-
 import org.junit.Test
-import org.junit.runner.RunWith
-
 import org.junit.Assert.*
 import org.junit.Rule
 
@@ -20,8 +16,6 @@ import org.junit.Rule
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @HiltAndroidTest
-//@Config(application = HiltTestApplication::class)
-//@RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)

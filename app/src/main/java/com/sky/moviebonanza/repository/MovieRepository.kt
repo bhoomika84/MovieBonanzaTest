@@ -1,7 +1,6 @@
 package com.sky.moviebonanza.repository
 
 import android.annotation.SuppressLint
-import com.sky.moviebonanza.data.DataOrException
 import com.sky.moviebonanza.data.Resource
 import com.sky.moviebonanza.model.MovieItem
 import com.sky.moviebonanza.network.MovieApi

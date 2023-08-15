@@ -3,4 +3,6 @@
     <string name="loading">Loading...</string>
     <string name="try_again">Try Again</string>
     <string name="search">Search Movie</string>
+    <string name="search_empty">Search is Empty</string>
+    <string name="data_empty">Data is Empty</string>
 </resources>

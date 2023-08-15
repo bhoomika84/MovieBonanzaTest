@@ -27,6 +27,8 @@ import com.sky.moviebonanza.components.MovieAppBar
 import com.sky.moviebonanza.components.MovieRowData
 import com.sky.moviebonanza.components.SearchMovie
 import com.sky.moviebonanza.model.MovieItem
+import com.sky.moviebonanza.navigation.MovieBonanzaScreens
+import com.sky.moviebonanza.utils.formatStringToJSON
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,10 +80,9 @@ fun showLoading() {
 fun LoadContentForList(navController: NavController, viewModel: HomeViewModel) {
 
     println("OUTSIDE LoadContentForList ${viewModel.loading} ${viewModel.listOfMovies}")
-    if(viewModel.loading){
+    if (viewModel.loading) {
         showLoading()
-    }
-    else if (viewModel.exception.isNotEmpty()) {
+    } else if (viewModel.exception.isNotEmpty()) {
         println("OUTSIDE Exception ${viewModel.exception} || ")
         Column(
             modifier = Modifier
@@ -98,31 +99,6 @@ fun LoadContentForList(navController: NavController, viewModel: HomeViewModel) {
         ShowMovieListContent(navController, viewModel)
     }
 }
-/*
-@Composable
-fun LoadContentForList(navController: NavController, viewModel: HomeViewModel) {
-    val movieData = viewModel.dataOrExceptionMovies.value
-    println("OUTSIDE LoadContentForList ${viewModel.listOfMovies}")
-    if (movieData.loading == true) {
-        println("OUTSIDE Loading")
-        showLoading()
-    } else if (!movieData.exception.isNullOrEmpty()) {
-        println("OUTSIDE Exception ${movieData.exception} || ${movieData.loading}")
-        Column(
-            modifier = Modifier
-                .padding(12.dp)
-                .fillMaxHeight()
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(text = movieData.exception!!)
-        }
-    } else {
-        println("OUTSIDE Data")
-        ShowMovieListContent(navController, viewModel)
-    }
-}*/
 
 @Composable
 fun ShowMovieListContent(
@@ -149,10 +125,9 @@ fun ShowMovieListContent(
 @Composable
 fun ShowMovieListData(navController: NavController, viewModel: HomeViewModel) {
     val movieList: List<MovieItem> = viewModel.listOfMovies
-    if(movieList.isEmpty()){
-        Text(text = "Search is Empty")
-    }
-    else {
+    if (movieList.isEmpty()) {
+        Text(text = stringResource(id = R.string.search_empty))
+    } else {
         LazyVerticalGrid(
             columns = GridCells.Adaptive(minSize = 158.dp),
             contentPadding = PaddingValues(12.dp),
@@ -160,7 +135,10 @@ fun ShowMovieListData(navController: NavController, viewModel: HomeViewModel) {
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             items(movieList) {
-                MovieRowData(it)
+                MovieRowData(it) {movieItem ->
+                    val objMovie = formatStringToJSON(movieItem)
+                    navController.navigate(MovieBonanzaScreens.DetailsScreen.name+"/${objMovie}")
+                }
             }
         }
     }

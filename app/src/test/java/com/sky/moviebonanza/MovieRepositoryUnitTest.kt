@@ -59,19 +59,4 @@ class MovieRepositoryUnitTest {
         val sut = MovieRepository(movieAPI)
         result = sut.getMovieList()
     }
-
-    /*@Test
-    fun testGetProducts_ExpectedError(): Unit = runTest {
-        val exception:String = ""
-        val movieList = arrayListOf(
-            MovieItem(Title="Parasite",Genre="Drama",Poster="https://picsum.photos/id/1/200/300"),
-            MovieItem(Title="Knives Out",Genre="Crime",Poster="https://picsum.photos/id/1/200/300")
-        )
-        *//*Mockito.`when`(movieAPI.getAllMovies()).thenReturn(
-            Response.error(401,"UnAuthorised".toResponseBody())
-        )
-        val sut = MovieRepository(movieAPI)
-        val result = sut.getMovieList()
-        Assert.assertEquals(true, result is Resource.Error)*//*
-    }*/
 }

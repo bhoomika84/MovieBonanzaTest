@@ -55,6 +55,7 @@ import coil.request.ImageRequest
 import coil.size.Size
 import com.sky.moviebonanza.R
 import com.sky.moviebonanza.model.MovieItem
+import com.sky.moviebonanza.utils.formatJSONtoString
 
 @Composable
 fun MovieLogo(modifier: Modifier = Modifier) {
@@ -115,12 +116,13 @@ fun MovieAppBar(
 }
 
 @Composable
-fun MovieRowData(movieItem: MovieItem) {
+fun MovieRowData(movieItem: MovieItem, onItemClicked : (String) -> Unit = {}) {
     val imageUrl = movieItem.Poster
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(240.dp)
+            .clickable { onItemClicked.invoke(formatJSONtoString(movieItem)) }
 
     ) {
         Column(

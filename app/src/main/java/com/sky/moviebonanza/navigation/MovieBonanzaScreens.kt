@@ -2,7 +2,8 @@ package com.sky.moviebonanza.navigation
 
 enum class MovieBonanzaScreens {
     SplashScreen,
-    HomeScreen
+    HomeScreen,
+    DetailsScreen
    ;
 
     companion object{
@@ -10,6 +11,7 @@ enum class MovieBonanzaScreens {
         = when(route.substringBefore("/")){
             SplashScreen.name -> SplashScreen
             HomeScreen.name -> HomeScreen
+            DetailsScreen.name -> DetailsScreen
             else -> throw java.lang.IllegalArgumentException("Route $route is not recognized")
         }
     }
